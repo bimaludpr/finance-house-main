@@ -1,0 +1,19 @@
+# Ignore directories 
+
+#Node modules
+announcement/node_modules
+checkout/node_modules
+footer/node_modules
+home/node_modules
+popup/node_modules
+shop/node_modules
+testimonial/node_modules
+
+#Node modules
+announcement/.next
+checkout/.next
+footer/.next
+home/.next
+popup/.next
+shop/.next
+testimonial/.next

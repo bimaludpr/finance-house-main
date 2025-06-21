@@ -1,0 +1,43 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: home-nxt
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: home-nxt
+  template:
+    metadata:
+      labels:
+        app: home-nxt
+    spec:
+      imagePullSecrets:
+        - name: regcred
+      containers:
+        - name: home-nxt
+          image: "shtdev.xyz:5000/home-nxt:latest"
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 6003
+          envFrom:
+            - configMapRef:
+                name: services-config
+          env:
+            - name: PORT
+              value: "6003"
+          volumeMounts:
+            - name: uploads-volume
+              mountPath: /app/uploads
+            - name: config-volume
+              mountPath: /app/dist/config
+      volumes:
+        - name: uploads-volume
+          persistentVolumeClaim:
+            claimName: uploads-pvc
+        - name: config-volume
+          configMap:
+            name: app-config-json
+            items:
+              - key: config.json
+                path: config.json

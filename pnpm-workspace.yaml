@@ -1,0 +1,6 @@
+packages:
+  - 'home'
+  - 'announcement'
+  - 'popup'
+  - 'testimonial'
+  - 'footer'

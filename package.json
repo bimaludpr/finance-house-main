@@ -1,0 +1,30 @@
+{
+  "name": "finance-house-main",
+  "description": "Finance House Module Federation",
+  "private": true,
+  "version": "0.0.1",
+  "packageManager": "pnpm@10.11.1",
+  "scripts": {
+    "preinstall": "pnpm install --ignore-scripts",
+    "start": "pnpm --parallel --filter nextjs-ssr_* dev",
+    "build": "pnpm --parallel --filter nextjs-ssr_* build",
+    "serve": "pnpm --parallel --filter nextjs-ssr_* start",
+    "docker:build": "docker compose build",
+    "docker:up": "docker compose up -d",
+    "docker:down": "docker compose down",
+    "docker:logs": "docker compose logs -f",
+    "e2e:ci": "pnpm run start & sleep 10 && wait-on http-get://localhost:6001/ && wait-on http-get://localhost:6002/ && wait-on http-get://localhost:6003/ && npx cypress run --config-file ../cypress-e2e/config/cypress.config.ts --config '{\"supportFile\": \"../cypress-e2e/support/e2e.ts\"}' --spec \"./e2e/*.cy.ts\" --browser=chrome"
+  },
+  "dependencies": {
+    "@module-federation/nextjs-mf": "8.7.8",
+    "concurrently": "^8.2.2",
+    "wait-on": "7.2.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.15.3",
+    "@types/react": "19.1.2",
+    "cross-env": "^7.0.3",
+    "rimraf": "^6.0.1",
+    "typescript": "^5.8.3"
+  }
+}

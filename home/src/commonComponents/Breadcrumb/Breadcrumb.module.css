@@ -1,0 +1,25 @@
+.breadcrumb {
+  display: inline-flex;
+  color: black;
+  font-size: 15px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.breadcrumbItem {
+  cursor: pointer;
+  margin: 0;
+  position: relative;
+  white-space: nowrap;
+}
+
+.breadcrumbItem::after {
+  content: '/';
+  margin: 0 10px;
+  color: #888; /* Optional: distinguish the separator color */
+}
+
+.breadcrumbItem:last-of-type::after {
+  content: '';
+  display: none;
+}

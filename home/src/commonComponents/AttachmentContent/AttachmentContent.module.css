@@ -1,0 +1,46 @@
+.attachmentContent {
+  margin-top: 10px;
+}
+
+.label {
+  color: #161616;
+  font-size: 14px;
+  margin-bottom: 7px;
+}
+
+.content {
+  display: flex;
+  gap: 15px;
+  width: 100%;
+  flex-wrap: wrap;
+}
+
+.fileContainer {
+  position: relative;
+  background-color: #e2e2e2;
+  padding: 7px 5px 6px;
+  border-radius: 5px;
+  display: inline-flex;
+}
+
+.image .file {
+  border-radius: 5px;
+  object-fit: cover;
+}
+
+.file {
+  height: 40px;
+  width: 40px;
+}
+
+.closeWrap {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  cursor: pointer;
+}
+
+.close {
+  height: 16px;
+  width: 16px;
+}

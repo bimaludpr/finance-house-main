@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: services-config
+data:
+  PORT: "6003"
+  NEXT_PUBLIC_HOST_URL: "http://home-nxt:6003"
+  ANNOUNCEMENT_URL: "http://announcement-nxt:6004"
+  POPUP_URL: "http://popup-nxt:6005"
+  TESTIMONIAL_URL: "http://testimonial-nxt:6006"
+  FOOTER_URL: "http://footer-nxt:6007"

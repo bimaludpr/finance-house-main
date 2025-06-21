@@ -1,0 +1,43 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: popup-nxt
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: popup-nxt
+  template:
+    metadata:
+      labels:
+        app: popup-nxt
+    spec:
+      imagePullSecrets:
+        - name: regcred
+      containers:
+        - name: popup-nxt
+          image: "shtdev.xyz:5000/popup-nxt:latest"
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 6005
+          envFrom:
+            - configMapRef:
+                name: services-config
+          env:
+            - name: PORT
+              value: "6005"
+          volumeMounts:
+            - name: uploads-volume
+              mountPath: /app/uploads
+            - name: config-volume
+              mountPath: /app/dist/config
+      volumes:
+        - name: uploads-volume
+          persistentVolumeClaim:
+            claimName: uploads-pvc
+        - name: config-volume
+          configMap:
+            name: app-config-json
+            items:
+              - key: config.json
+                path: config.json

@@ -1,0 +1,26 @@
+# Dockerfile.dev — for all microfrontends (reused by each)
+FROM node:18-alpine
+
+# Enable pnpm
+RUN corepack enable
+
+WORKDIR /app
+
+# Copy dependency definitions
+COPY package.json pnpm-lock.yaml ./
+
+# Install all dependencies
+RUN pnpm install
+
+# Copy source code (individual app will mount its folder)
+COPY . .
+
+# Expose default Next.js dev port
+EXPOSE 3000
+
+# Start the dev server
+CMD ["pnpm", "dev"]
+
+
+# production
+# docker-compose -f docker-compose.yml up --build

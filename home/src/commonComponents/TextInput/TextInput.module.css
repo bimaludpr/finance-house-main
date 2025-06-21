@@ -1,0 +1,31 @@
+.input_design label {
+  display: block;
+  margin-bottom: 6px;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.input_design input {
+  padding: 10px 16px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  outline: none;
+  width: 100%;
+  transition: border 0.3s ease;
+  font-size: 15px;
+  color: black;
+  opacity: .7;
+}
+
+.input_design input::placeholder {
+  color: #999;
+  font-size: 14px;
+  opacity: 1;
+}
+
+
+.input_design input:focus {
+  border-color: #7daef8;
+  box-shadow: none;
+  outline: none;
+}

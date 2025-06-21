@@ -1,0 +1,43 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: announcement-nxt
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: announcement-nxt
+  template:
+    metadata:
+      labels:
+        app: announcement-nxt
+    spec:
+      imagePullSecrets:
+        - name: regcred
+      containers:
+        - name: announcement-nxt
+          image: "shtdev.xyz:5000/announcement-nxt:latest"
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 6004
+          envFrom:
+            - configMapRef:
+                name: services-config
+          env:
+            - name: PORT
+              value: "6004"
+          volumeMounts:
+            - name: uploads-volume
+              mountPath: /app/uploads
+            - name: config-volume
+              mountPath: /app/dist/config
+      volumes:
+        - name: uploads-volume
+          persistentVolumeClaim:
+            claimName: uploads-pvc
+        - name: config-volume
+          configMap:
+            name: app-config-json
+            items:
+              - key: config.json
+                path: config.json

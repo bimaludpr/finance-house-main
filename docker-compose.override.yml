@@ -1,0 +1,61 @@
+
+services:
+  home:
+    build:
+      context: .
+      dockerfile: ./home/Dockerfile
+    ports:
+      - "6003:6003"
+    working_dir: /app/home
+    volumes:
+      - ./home:/app/home
+      - /app/home/node_modules
+    command: ["pnpm", "dev"]
+
+  announcement:
+    build:
+      context: .
+      dockerfile: ./announcement/Dockerfile
+    ports:
+      - "6004:6004"
+    working_dir: /app/announcement
+    volumes:
+      - ./announcement:/app/announcement
+       - /app/announcement/node_modules
+    command: ["pnpm", "dev"]
+
+  popup:
+    build:
+      context: .
+      dockerfile: ./popup/Dockerfile
+    ports:
+      - "6005:6005"
+    working_dir: /app/popup
+    volumes:
+      - ./popup:/app/popup
+       - /app/popup/node_modules
+    command: ["pnpm", "dev"]
+
+  testimonial:
+    build:
+      context: .
+      dockerfile: ./testimonial/Dockerfile
+    ports:
+      - "6006:6006"
+    working_dir: /app/testimonial
+    volumes:
+      - ./testimonial:/app/testimonial
+       - /app/testimonial/node_modules
+    command: ["pnpm", "dev"]
+
+  footer:
+    build:
+      context: .
+      dockerfile: ./footer/Dockerfile
+    ports:
+      - "6007:6007"
+    working_dir: /app/footer
+    volumes:
+      - ./footer:/app/footer
+      - /app/footer/node_modules
+    command: ["pnpm", "dev"]

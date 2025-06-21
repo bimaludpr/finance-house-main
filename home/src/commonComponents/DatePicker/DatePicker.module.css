@@ -1,0 +1,40 @@
+.datePickerWrapper :global(.react-datepicker-wrapper) {
+  display: block !important;
+  padding: 0;
+  border: 0;
+}
+
+.label {
+  display: block;
+  margin-bottom: 6px;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+
+
+.dateInput {
+  padding: 10px 16px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  outline: none;
+  width: 100%;
+  transition: border 0.3s ease;
+  font-size: 15px;
+  color: black;
+  opacity: .7;
+
+}
+
+
+.dateInput:focus {
+  border-color: #7daef8;
+  box-shadow: none;
+  outline: none;
+}
+
+
+.dateInput:disabled {
+  background-color: #e9ecef;
+  opacity: 1;
+}

@@ -1,0 +1,149 @@
+.titleBar {
+  margin-bottom: 24px;
+}
+
+.header {
+  background-color: #f4ece8;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  border-radius: 8px 8px 0 0;
+}
+
+.header h3 {
+  color: #373737;
+  font-size: 16px;
+  line-height: 24px;
+  margin: 0;
+  font-family: "Dubai-regular";
+  font-weight: 600;
+}
+
+.actions {
+  display: flex;
+  gap: 15px;
+}
+
+.toggleIcon {
+  color: #161616;
+  cursor: pointer;
+  rotate: 180deg;
+}
+
+.tbCollapse {
+  rotate: 0deg;
+}
+
+.noPadding {
+  padding: 0 !important;
+  overflow: hidden;
+}
+
+.expandableSection {
+  border: 1px solid #d9d9d9;
+  border-top: none;
+  border-radius: 0 0 8px 8px;
+  padding: 20px;
+}
+
+.tbHide {
+  border: none;
+  overflow: hidden;
+  height: 0;
+  padding: 0;
+}
+
+/* Variation: css-tbr-esc2 */
+.cssTbrEsc2 {
+  margin-bottom: 25px;
+}
+
+.cssTbrEsc2 .header {
+  background-color: inherit;
+  border-bottom: 2px solid #f4ece8;
+  padding-right: 0;
+}
+
+.cssTbrEsc2 .expandableSection {
+  border: none;
+}
+
+.cssTbrEsc2 .expandableSection:empty {
+  display: none;
+}
+
+/* Variation: css-tbr-esc3 */
+.cssTbrEsc3 {
+  border: 2px solid #f4ece8;
+  border-radius: 10px;
+  padding: 10px;
+  margin-bottom: 0;
+  background-color: #f9f9f9;
+}
+
+.cssTbrEsc3 .header {
+  border: none;
+  padding-right: 20px;
+}
+
+.cssTbrEsc3 .expandableSection {
+  border: none;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+.cssTbrEsc3 .expandableSection:empty {
+  display: none;
+}
+
+/* Variation: css-tbr-esc4 */
+.cssTbrEsc4 .header {
+  background-color: inherit;
+}
+
+.cssTbrEsc4 .header h3 {
+  padding: 0 10px;
+  border-bottom: 2px solid gray;
+  display: flex;
+  gap: 20px;
+}
+
+/* Variation: css-tbr-esc5 */
+.cssTbrEsc5 {
+  margin: 0 -20px;
+}
+
+.cssTbrEsc5 .header {
+  background-color: #efefef;
+  border-radius: 0;
+}
+
+.cssTbrEsc5 .header h3 {
+  font-size: 14px;
+}
+
+/* Variation: css-tbr-esc6 */
+.cssTbrEsc6 {
+  margin-left: -20px;
+  margin-right: -20px;
+  margin-bottom: 0px;
+  border: none;
+  border-bottom: 1px solid #e7e7e7;
+}
+
+.cssTbrEsc6 .header {
+  background-color: #fff;
+  border-radius: 0;
+  padding: 20px;
+}
+
+.cssTbrEsc6 .header h3 {
+  font-size: 14px;
+}
+
+.cssTbrEsc6 .expandableSection {
+  border-radius: 0;
+  border: none;
+  background-color: #fafafa;
+}

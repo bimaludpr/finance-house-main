@@ -1,0 +1,19 @@
+.pageHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.pageHeader > div {
+  display: flex;
+}
+
+.title {
+  flex-direction: column;
+}
+
+.buttons {
+  flex-direction: row;
+  gap: 10px;
+}

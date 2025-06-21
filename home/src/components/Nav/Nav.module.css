@@ -1,0 +1,54 @@
+/* Navbar.module.css */
+.navbar {
+    background: white;
+    padding: 10px;
+  }
+
+  .link__title {
+    color: white !important;
+  }
+  
+  .menu {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+  }
+  
+  .menuItem {
+    position: relative;
+    color: white;
+    cursor: pointer;
+    padding: 10px;
+  }
+  
+  .dropdown {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: #333;
+    padding: 10px;
+    list-style: none;
+    min-width: 150px;
+    z-index: 1000;
+  }
+  
+  .dropdownItem {
+    color: white;
+    padding: 5px 10px;
+    white-space: nowrap;
+  }
+  
+  .menuItem:hover .dropdown {
+    display: block;
+  }
+  
+  .dropdown a {
+    color: white;
+    text-decoration: none;
+  }
+  
+  .dropdown a:hover {
+    background: #444;
+  }
+  
