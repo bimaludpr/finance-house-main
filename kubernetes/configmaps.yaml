@@ -1,0 +1,41 @@
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: app-config-json
+  namespace: default
+data:
+  config.json: |
+    {
+      "port": 6004,
+      "environment": "production",
+      "database": {
+        "host": "postgres-service",
+        "port": 5432,
+        "name": "announcement_db"
+      },
+      "uploads": {
+        "path": "/app/uploads",
+        "maxSize": "10MB"
+      },
+      "logging": {
+        "level": "info"
+      },
+      "cors": {
+        "enabled": true,
+        "origins": ["*"]
+      }
+    }
+
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: services-config
+  namespace: default
+data:
+  DATABASE_URL: "postgresql://postgres:password@postgres-service:5432/announcement_db"
+  REDIS_URL: "redis://redis-service:6379"
+  NODE_ENV: "production"
+  PORT: "6004"
+  API_BASE_URL: "http://announcement-service:6004"
