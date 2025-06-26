@@ -1,0 +1,13 @@
+# Create uploads-pvc.yaml
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: uploads-pvc
+  namespace: default
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi  # Adjust size as needed
+  storageClassName: standard  # Use 'kubectl get sc' to see available classes
