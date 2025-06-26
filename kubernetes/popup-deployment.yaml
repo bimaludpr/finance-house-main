@@ -16,7 +16,7 @@ spec:
         - name: regcred
       containers:
         - name: popup-nxt
-          image: "shtdev.xyz:5000/popup-nxt:latest"
+          image: "localhost:5000/popup-nxt:latest"
           imagePullPolicy: Always
           ports:
             - containerPort: 6005
