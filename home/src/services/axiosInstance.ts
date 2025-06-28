@@ -39,7 +39,13 @@ axiosInstance.interceptors.response.use(
 
     if (data?.token === false || data?.message === "Missing token") {
       localStorage.clear();
-      window.location.href = "/login";
+      // Check if we're in a proxied context (home-nxt-service)
+      const currentPath = window.location.pathname;
+      if (currentPath.startsWith('/home-nxt-service')) {
+        window.location.href = "/home-nxt-service/login";
+      } else {
+        window.location.href = "/login";
+      }
     }
 
     return Promise.reject(error);

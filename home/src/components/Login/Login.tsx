@@ -34,7 +34,13 @@ const LoginForm = () => {
         login(formData, (status) => {
           if (status) {
             console.log("Login successful");
-            window.location.href = "/";
+            // Check if we're in a proxied context (home-nxt-service)
+            const currentPath = window.location.pathname;
+            if (currentPath.startsWith('/home-nxt-service')) {
+              window.location.href = "/home-nxt-service/";
+            } else {
+              window.location.href = "/";
+            }
           } else {
             console.log("Login failed with status", status);
           }
