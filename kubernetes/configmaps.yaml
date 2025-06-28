@@ -34,8 +34,31 @@ metadata:
   name: services-config
   namespace: default
 data:
+  # Home service environment variables
+  HOME_PORT: "6003"
+  NEXT_PUBLIC_HOST_URL: "http://home-nxt:6003"
+  
+  # Announcement service environment variables
+  ANNOUNCEMENT_PORT: "6004"
+  ANNOUNCEMENT_URL: "http://announcement-nxt:6004"
+  
+  # Popup service environment variables
+  POPUP_PORT: "6005"
+  POPUP_URL: "http://popup-nxt:6005"
+  
+  # Testimonial service environment variables
+  TESTIMONIAL_PORT: "6006"
+  TESTIMONIAL_URL: "http://testimonial-nxt:6006"
+  
+  # Footer service environment variables
+  FOOTER_PORT: "6007"
+  FOOTER_URL: "http://footer-nxt:6007"
+  
+  # Common environment variables
+  NODE_ENV: "production"
+  NEXT_PRIVATE_LOCAL_WEBPACK: "true"
+  
+  # Database and other services
   DATABASE_URL: "postgresql://postgres:password@postgres-service:5432/announcement_db"
   REDIS_URL: "redis://redis-service:6379"
-  NODE_ENV: "production"
-  PORT: "6004"
   API_BASE_URL: "http://announcement-service:6004"
