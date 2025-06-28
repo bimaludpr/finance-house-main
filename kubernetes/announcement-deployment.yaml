@@ -16,7 +16,7 @@ spec:
         - name: regcred
       containers:
         - name: announcement-nxt
-          image: "localhost:5000/announcement-nxt:latest"
+          image: " 192.168.49.1:5000/announcement-nxt:latest"
           imagePullPolicy: Always
           ports:
             - containerPort: 6004
