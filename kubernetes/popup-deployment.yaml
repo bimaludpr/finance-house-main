@@ -17,7 +17,7 @@ spec:
       containers:
         - name: popup-nxt
           image: "192.168.49.1:5000/popup-nxt:latest"
-          imagePullPolicy: Never
+          imagePullPolicy: Always
           ports:
             - containerPort: 6005
           envFrom:
