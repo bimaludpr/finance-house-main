@@ -13,10 +13,16 @@ const nextConfig = {
   webpack: (config, options) => {
     const { isServer } = options;
     
-    // Set publicPath explicitly
-    config.output.publicPath = process.env.NEXT_PUBLIC_HOST_URL 
-      ? `${process.env.NEXT_PUBLIC_HOST_URL}/_next/` 
-      : 'auto';
+    // Set publicPath explicitly - use external URL for client-side
+    if (isServer) {
+      // Server-side: use internal Kubernetes service URL
+      config.output.publicPath = process.env.NEXT_PUBLIC_HOST_URL 
+        ? `${process.env.NEXT_PUBLIC_HOST_URL}/_next/` 
+        : 'auto';
+    } else {
+      // Client-side: use external URL through nginx proxy
+      config.output.publicPath = 'http://localhost/_next/';
+    }
     
     config.experiments = {
       topLevelAwait: true,
@@ -84,10 +90,12 @@ const nextConfig = {
           "./AuthGuard": "./src/components/AuthGuard/AuthGuard.tsx",
         },
         filename: "static/chunks/remoteEntry.js",
-        // Add publicPath configuration
-        publicPath: process.env.NEXT_PUBLIC_HOST_URL 
-          ? `${process.env.NEXT_PUBLIC_HOST_URL}/_next/static/chunks/` 
-          : 'auto',
+        // Add publicPath configuration - use external URL for client-side
+        publicPath: isServer 
+          ? (process.env.NEXT_PUBLIC_HOST_URL 
+              ? `${process.env.NEXT_PUBLIC_HOST_URL}/_next/static/chunks/` 
+              : 'auto')
+          : 'http://localhost/_next/static/chunks/',
         shared: {
           react: {
             singleton: true,
