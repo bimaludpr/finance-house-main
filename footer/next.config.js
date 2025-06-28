@@ -3,10 +3,19 @@ const NextFederationPlugin = require("@module-federation/nextjs-mf");
 // loading remotes on demand, not ideal for SSR
 const remotes = (isServer) => {
   const location = isServer ? "ssr" : "chunks";
-  return {
-    home: `home@http://localhost:6003/_next/static/${location}/remoteEntry.js`,
-  };
+  if (isServer) {
+    // Server-side: use internal Kubernetes service URL
+    return {
+      home: `home@${process.env.NEXT_PUBLIC_HOST_URL || 'http://localhost:6003'}/_next/static/${location}/remoteEntry.js`,
+    };
+  } else {
+    // Client-side: use external URL through nginx proxy
+    return {
+      home: `home@http://localhost/_next/static/${location}/remoteEntry.js`,
+    };
+  }
 };
+
 module.exports = {
   webpack(config, options) {
     config.plugins.push(

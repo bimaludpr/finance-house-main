@@ -25,7 +25,10 @@ spec:
                 name: services-config
           env:
             - name: PORT
-              value: "6005"
+              valueFrom:
+                configMapKeyRef:
+                  name: services-config
+                  key: POPUP_PORT
           volumeMounts:
             - name: uploads-volume
               mountPath: /app/uploads

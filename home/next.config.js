@@ -23,20 +23,31 @@ const nextConfig = {
       layers: true,
     };
 
+    // Define external URLs for Module Federation
+    const getExternalUrl = (serviceName, defaultPort) => {
+      if (isServer) {
+        // Server-side: use internal Kubernetes service URLs
+        return process.env[`${serviceName.toUpperCase()}_URL`] || `http://localhost:${defaultPort}`;
+      } else {
+        // Client-side: use external URLs through nginx proxy
+        return `http://localhost/${serviceName}-nxt-service`;
+      }
+    };
+
     config.plugins.push(
       new NextFederationPlugin({
         name: "home",
         remotes: {
-          announcement: `announcement@${process.env.ANNOUNCEMENT_URL || 'http://localhost:6004'}/_next/static/${
+          announcement: `announcement@${getExternalUrl('ANNOUNCEMENT', '6004')}/_next/static/${
             isServer ? "ssr" : "chunks"
           }/remoteEntry.js`,
-          popup: `popup@${process.env.POPUP_URL || 'http://localhost:6005'}/_next/static/${
+          popup: `popup@${getExternalUrl('POPUP', '6005')}/_next/static/${
             isServer ? "ssr" : "chunks"
           }/remoteEntry.js`,
-          testimonial: `testimonial@${process.env.TESTIMONIAL_URL || 'http://localhost:6006'}/_next/static/${
+          testimonial: `testimonial@${getExternalUrl('TESTIMONIAL', '6006')}/_next/static/${
             isServer ? "ssr" : "chunks"
           }/remoteEntry.js`,
-          footer: `footer@${process.env.FOOTER_URL || 'http://localhost:6007'}/_next/static/${
+          footer: `footer@${getExternalUrl('FOOTER', '6007')}/_next/static/${
             isServer ? "ssr" : "chunks"
           }/remoteEntry.js`,
         },
