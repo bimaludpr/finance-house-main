@@ -17,7 +17,7 @@ spec:
       containers:
         - name: announcement-nxt
           image: "192.168.49.1:5000/announcement-nxt:latest"
-          imagePullPolicy: Always
+          imagePullPolicy: Never
           ports:
             - containerPort: 6004
           envFrom:
